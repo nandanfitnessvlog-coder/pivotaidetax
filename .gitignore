@@ -1,0 +1,7 @@
+# Binary dlls and temporary video recordings
+*.dll
+*.mp4
+.FullName
+node_modules/
+.DS_Store
+Thumbs.db

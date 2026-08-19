@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Formation Form - Pivot Aide Tax</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .form-page-wrapper {
+      background: linear-gradient(135deg, #0284c7 0%, #005696 50%, #0c2340 100%);
+      min-height: 85vh;
+      padding: 60px 20px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 660px;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    .form-card-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      text-align: center;
+      color: #1e293b;
+      margin-bottom: 24px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 4%;
+      background: #005696;
+      transition: width 0.3s ease;
+    }
+    .step-section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .form-label span.req {
+      color: #dc2626;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background-color: #ffffff;
+      color: #0f172a;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: #005696;
+      box-shadow: 0 0 0 3px rgba(0, 86, 150, 0.15);
+    }
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .sub-label {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 16px;
+      margin-top: 12px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+    .checkbox-item input {
+      margin-top: 3px;
+    }
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+    .btn-nav-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .btn-prev {
+      background: #005696;
+      color: #ffffff;
+      border: none;
+      padding: 10px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-next {
+      background: #005696;
+      color: #ffffff;
+      border: none;
+      padding: 10px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .step-pane {
+      display: none;
+    }
+    .step-pane.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- ==========================================
+       1. Top Banner
+       ========================================== -->
+  <div class="top-banner">
+    <div class="container">
+      <div class="top-banner-text">
+        Start Your Tax Return Today With Clear Pricing and Expert Help
+      </div>
+      <div class="top-banner-contact">
+        <a href="tel:+15714703754">
+          <svg width="15" height="15" viewBox="0 0 24 24">
+            <path
+              d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+          +1 (571) 470-3754
+        </a>
+        <a href="mailto:tax@pivotaide.com">
+          <svg width="15" height="15" viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+          tax@pivotaide.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       2. Header / Navigation
+       ========================================== -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo-brand" aria-label="Pivot Aide Tax Home">
+        <img src="logo.png" alt="Pivot Aide Tax" class="brand-logo-img">
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#how-it-works" class="nav-link">File Your Taxes</a></li>
+        <li class="nav-dropdown">
+          <a href="javascript:void(0);" class="nav-link dropdown-toggle active">
+            Business Services
+            <svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M7 10l5 5 5-5z" />
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="quickprepare.html" class="dropdown-item">QuickPrepare</a></li>
+            <li><a href="payroll-services.html" class="dropdown-item">Payroll Services</a></li>
+            <li><a href="bookkeeping-services.html" class="dropdown-item">Bookkeeping Services</a></li>
+            <li><a href="business-formation.html" class="dropdown-item">Business Formation</a></li>
+          </ul>
+        </li>
+        <li><a href="tax-resources.html" class="nav-link">Tax Resources</a></li>
+        <li><a href="https://pivotaide.odoo.com/appointment/1" target="_blank" rel="noopener noreferrer"
+            class="nav-link" id="openAppointmentNav">Appointments</a></li>
+        <li class="nav-dropdown">
+          <a href="contact.html" class="nav-link dropdown-toggle">
+            Contact
+            <svg class="dropdown-arrow" viewBox="0 0 24 24">
+              <path d="M7 10l5 5 5-5z" />
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="contact.html" class="dropdown-item">Contact Us</a></li>
+            <li><a href="faqs.html" class="dropdown-item">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="header-cta">
+        <a href="quickprepare.html" class="btn-quickprepare">QuickPrepare</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Multi-Step Form Main Container -->
+  <main id="main-content" class="form-page-wrapper">
+    <div class="form-card">
+      <h1 class="form-card-title">Business Formation</h1>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <form id="businessFormationForm" onsubmit="return false;">
+        
+        <!-- STEP 1 -->
+        <div class="step-pane active" data-step="1">
+          <div class="step-section-title">Business Entity & Ownership Structure</div>
+          <div class="form-group">
+            <label class="form-label">Desired Business Name <span class="req">*</span></label>
+            <input type="text" class="form-input" id="businessName" placeholder="Enter business name" required>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-pane" data-step="2">
+          <div class="form-group">
+            <label class="form-label">Entity type requested <span class="req">*</span></label>
+            <select class="form-select" id="entityType">
+              <option value="">Select an Option</option>
+              <option value="LLC / Corporation (S-Corp eligible)">LLC / Corporation (S-Corp eligible)</option>
+              <option value="Nonprofit">Nonprofit</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-pane" data-step="3">
+          <div class="form-group">
+            <label class="form-label">Ownership type <span class="req">*</span></label>
+            <select class="form-select" id="ownershipType">
+              <option value="">Select an Option</option>
+              <option value="Single-owner">Single-owner</option>
+              <option value="Multi-owner">Multi-owner</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-pane" data-step="4">
+          <div class="form-group">
+            <label class="form-label">Ownership Percentage <span class="req">*</span></label>
+            <input type="text" class="form-input" id="ownershipPercentage" placeholder="e.g. 100%">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step-pane" data-step="5">
+          <div class="form-group">
+            <label class="form-label">Number of owners/members/shareholders <span class="req">*</span></label>
+            <select class="form-select" id="numOwners">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="10+">10+</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step-pane" data-step="6">
+          <div class="form-group">
+            <label class="form-label">Will any owner be a non-U.S. person? <span class="req">*</span></label>
+            <select class="form-select" id="nonUsPerson">
+              <option value="">Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="step-pane" data-step="7">
+          <div class="form-group">
+            <label class="form-label">Will the business have employees within 12 months? <span class="req">*</span></label>
+            <select class="form-select" id="hasEmployees">
+              <option value="">Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 8 -->
+        <div class="step-pane" data-step="8">
+          <div class="form-group">
+            <label class="form-label">Formation State <span class="req">*</span></label>
+            <select class="form-select" id="formationState">
+              <option value="">Select State</option>
+              <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 9 -->
+        <div class="step-pane" data-step="9">
+          <div class="form-group">
+            <label class="form-label">Business address <span class="req">*</span></label>
+            <input type="text" class="form-input" id="busAddressLine1" placeholder="Address Line 1" style="margin-bottom:8px;">
+            <div class="form-grid-2" style="margin-bottom:8px;">
+              <div>
+                <input type="text" class="form-input" id="busCity" placeholder="City">
+                <div class="sub-label">City</div>
+              </div>
+              <div>
+                <select class="form-select" id="busState">
+                  <option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="California">California</option><option value="Delaware">Delaware</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="New York">New York</option><option value="Texas">Texas</option><option value="Wyoming">Wyoming</option>
+                </select>
+                <div class="sub-label">State</div>
+              </div>
+            </div>
+            <div>
+              <input type="text" class="form-input" id="busZip" placeholder="Zip Code">
+              <div class="sub-label">Zip Code</div>
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 10 -->
+        <div class="step-pane" data-step="10">
+          <div class="step-section-title">Primary Contact Information</div>
+          <div class="form-group">
+            <label class="form-label">Full legal name (primary contact) <span class="req">*</span></label>
+            <div class="form-grid-3">
+              <div>
+                <input type="text" class="form-input" id="contactFirst" placeholder="First">
+                <div class="sub-label">First</div>
+              </div>
+              <div>
+                <input type="text" class="form-input" id="contactMiddle" placeholder="Middle">
+                <div class="sub-label">Middle</div>
+              </div>
+              <div>
+                <input type="text" class="form-input" id="contactLast" placeholder="Last">
+                <div class="sub-label">Last</div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 11 -->
+        <div class="step-pane" data-step="11">
+          <div class="form-group">
+            <label class="form-label">Email address <span class="req">*</span></label>
+            <input type="email" class="form-input" id="contactEmail" placeholder="name@example.com">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 12 -->
+        <div class="step-pane" data-step="12">
+          <div class="form-group">
+            <label class="form-label">Phone number <span class="req">*</span></label>
+            <input type="tel" class="form-input" id="contactPhone" placeholder="(083) 104-2580">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 13 -->
+        <div class="step-pane" data-step="13">
+          <div class="form-group">
+            <label class="form-label">Mailing address (if different)</label>
+            <input type="text" class="form-input" id="mailAddressLine1" placeholder="Address Line 1" style="margin-bottom:8px;">
+            <div class="form-grid-2" style="margin-bottom:8px;">
+              <div>
+                <input type="text" class="form-input" id="mailCity" placeholder="City">
+                <div class="sub-label">City</div>
+              </div>
+              <div>
+                <select class="form-select" id="mailState">
+                  <option value="Alabama">Alabama</option><option value="California">California</option><option value="Delaware">Delaware</option><option value="Florida">Florida</option><option value="New York">New York</option><option value="Texas">Texas</option><option value="Wyoming">Wyoming</option>
+                </select>
+                <div class="sub-label">State</div>
+              </div>
+            </div>
+            <div>
+              <input type="text" class="form-input" id="mailZip" placeholder="Zip Code">
+              <div class="sub-label">Zip Code</div>
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 14 -->
+        <div class="step-pane" data-step="14">
+          <div class="form-group">
+            <label class="form-label">Business phone number (if different from personal)</label>
+            <input type="tel" class="form-input" id="busPhone" placeholder="(083) 104-2580">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 15 -->
+        <div class="step-pane" data-step="15">
+          <div class="form-group">
+            <label class="form-label">Business Activity in a few words: <span class="req">*</span></label>
+            <textarea class="form-textarea" id="busActivity" rows="4" placeholder="Describe your core business operations..."></textarea>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 16 -->
+        <div class="step-pane" data-step="16">
+          <div class="form-group">
+            <label class="form-label">SSN (required for EIN filing)</label>
+            <input type="password" class="form-input" id="ssnInput" placeholder="Input SSN">
+            <div class="sub-label" style="color: #64748b; margin-top: 6px;">Do not email SSNs or ID Images. Use the secure upload portal only.</div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 17 -->
+        <div class="step-pane" data-step="17">
+          <div class="step-section-title">Registered Agent & State Requirements</div>
+          <div class="form-group">
+            <label class="form-label">Do you want Pivot Aide to provide Registered Agent service (1st year included in package)? <span class="req">*</span></label>
+            <select class="form-select" id="registeredAgent">
+              <option value="">Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 18 -->
+        <div class="step-pane" data-step="18">
+          <div class="step-section-title">Document Uploads (Secure Upload Only)</div>
+          <div class="sub-label" style="margin-bottom: 16px;">Do not email SSNs or ID images. Use the secure upload portal only.</div>
+          <div class="form-group">
+            <label class="form-label">Upload Government-Issued ID for the responsible party (Driver's license / Passport)</label>
+            <div class="upload-box" onclick="document.getElementById('idUpload').click()">
+              <div style="font-size: 2rem; margin-bottom: 8px;">📑</div>
+              <div style="font-size: 0.9rem; font-weight: 600; color: #005696;">Click or drag a file to this area to upload.</div>
+              <div class="sub-label">Only PDF format allowed</div>
+              <input type="file" id="idUpload" accept=".pdf" style="display:none;" onchange="alert('File selected: ' + this.files[0].name)">
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 19 -->
+        <div class="step-pane" data-step="19">
+          <div class="step-section-title">Responsible Party Information for EIN (IRS) - If Multiple Owners</div>
+          <div class="form-group">
+            <label class="form-label">Responsible party Full Legal Name</label>
+            <div class="form-grid-3">
+              <div>
+                <input type="text" class="form-input" id="respFirst" placeholder="First">
+                <div class="sub-label">First</div>
+              </div>
+              <div>
+                <input type="text" class="form-input" id="respMiddle" placeholder="Middle">
+                <div class="sub-label">Middle</div>
+              </div>
+              <div>
+                <input type="text" class="form-input" id="respLast" placeholder="Last">
+                <div class="sub-label">Last</div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 20 -->
+        <div class="step-pane" data-step="20">
+          <div class="form-group">
+            <label class="form-label">Responsible party Title/Role</label>
+            <input type="text" class="form-input" id="respTitle" placeholder="e.g. Managing Member / CEO">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 21 -->
+        <div class="step-pane" data-step="21">
+          <div class="form-group">
+            <label class="form-label">Responsible party Address</label>
+            <input type="text" class="form-input" id="respAddrLine1" placeholder="Address Line 1" style="margin-bottom:8px;">
+            <div class="form-grid-2" style="margin-bottom:8px;">
+              <div>
+                <input type="text" class="form-input" id="respCity" placeholder="City">
+                <div class="sub-label">City</div>
+              </div>
+              <div>
+                <select class="form-select" id="respState">
+                  <option value="Alabama">Alabama</option><option value="California">California</option><option value="Delaware">Delaware</option><option value="Florida">Florida</option><option value="New York">New York</option><option value="Texas">Texas</option><option value="Wyoming">Wyoming</option>
+                </select>
+                <div class="sub-label">State</div>
+              </div>
+            </div>
+            <div>
+              <input type="text" class="form-input" id="respZip" placeholder="Zip Code">
+              <div class="sub-label">Zip Code</div>
+            </div>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 22 -->
+        <div class="step-pane" data-step="22">
+          <div class="form-group">
+            <label class="form-label">Responsible party Phone Number</label>
+            <input type="tel" class="form-input" id="respPhone" placeholder="(083) 104-2580">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 23 -->
+        <div class="step-pane" data-step="23">
+          <div class="form-group">
+            <label class="form-label">Responsible party Email</label>
+            <input type="email" class="form-input" id="respEmail" placeholder="resp@example.com">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 24 -->
+        <div class="step-pane" data-step="24">
+          <div class="step-section-title">Authorization & E-Signature</div>
+          <div class="form-group">
+            <label class="form-label">Consent to file: "I authorize Pivot Aide to prepare and submit filings on my behalf." <span class="req">*</span></label>
+            <select class="form-select" id="consentFile">
+              <option value="">Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 25 -->
+        <div class="step-pane" data-step="25">
+          <div class="form-group">
+            <label class="form-label">E-signature (name + date) <span class="req">*</span></label>
+            <input type="text" class="form-input" id="eSignature" placeholder="Full Name - DD/MM/YYYY" style="margin-bottom: 16px;">
+            
+            <label class="form-label">Best email for e-signature delivery <span class="req">*</span></label>
+            <input type="email" class="form-input" id="eSigEmail" placeholder="email@example.com">
+          </div>
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 26 -->
+        <div class="step-pane" data-step="26">
+          <div class="form-group">
+            <label class="form-label">BUSINESS FORMATION PACKAGES <span class="req">*</span></label>
+            <select class="form-select" id="pkgSelect" onchange="updateTotal()">
+              <option value="399">Standard Formation Package - $399.00</option>
+              <option value="599">Elite Formation Package (Expedited + Guidance) - $599.00</option>
+              <option value="1499">Business Pro (All-In-One Launch) - $1,499.00</option>
+            </select>
+          </div>
+
+          <div style="font-weight: 700; font-size: 0.9rem; color: #1e293b; margin-top: 20px;">Checkbox Items</div>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="100" onchange="updateTotal()"> Logo Design - $100.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="50" onchange="updateTotal()"> Business Card Design (print-ready + digital) - $50.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="150" onchange="updateTotal()"> Brand Mini-Kit (colors, fonts, logo usage guidance) - $150.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="400" onchange="updateTotal()"> Business Landing Page (1 page) - $400.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="800" onchange="updateTotal()"> Multi-Page Website (up to 5 pages) - $800.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="100" onchange="updateTotal()"> Domain setup / transfer assistance - $100.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="120" onchange="updateTotal()"> Hosting setup (plus service fee) - $120.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="100" onchange="updateTotal()"> Website updates & maintenance (monthly) - $100.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="60" onchange="updateTotal()"> Business Documents & Templates - $60.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="80" onchange="updateTotal()"> Flyer design (print + digital) - $80.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="80" onchange="updateTotal()"> Banner design (web or event) - $80.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="100" onchange="updateTotal()"> Social media promo kit (IG/FB templates) - $100.00</label>
+            <label class="checkbox-item"><input type="checkbox" class="addon-cb" value="200" onchange="updateTotal()"> Google Business Profile setup - $200.00</label>
+          </div>
+
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 27 (FINAL PAYMENT STEP) -->
+        <div class="step-pane" data-step="27">
+          <div class="step-section-title">Secure Payment via Stripe Credit Card <span class="req">*</span></div>
+          <div class="form-group">
+            <label class="form-label">Card number</label>
+            <input type="text" class="form-input" placeholder="1234 1234 1234 1234">
+          </div>
+          <div class="form-grid-2" style="margin-bottom:16px;">
+            <div>
+              <label class="form-label">Expiration date</label>
+              <input type="text" class="form-input" placeholder="MM / YY">
+            </div>
+            <div>
+              <label class="form-label">Security code</label>
+              <input type="text" class="form-input" placeholder="CVC">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Country</label>
+            <select class="form-select">
+              <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="India">India</option>
+            </select>
+          </div>
+
+          <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin: 20px 0;">
+            <div style="font-size: 0.9rem; font-weight: 600; color: #64748b;">Total</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #005696;" id="displayTotal">$399.00</div>
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.85rem; color: #334155; display:flex; align-items:center; gap:8px;">
+              <input type="checkbox" required> I agree to the Terms, Payment Policy, and Privacy Policy.
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Captcha <span class="req">*</span></label>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-weight:700;">6 * 8 =</span>
+              <input type="text" class="form-input" style="width: 100px;" placeholder="" required>
+            </div>
+          </div>
+
+          <div class="btn-nav-group">
+            <button type="button" class="btn-prev" onclick="prevStep()">Previous</button>
+            <button type="button" class="btn-next" style="background:#0284c7;" onclick="submitForm()">Submit & Pay</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color: var(--navy-dark); color: #ffffff; padding: 60px 0 30px; margin-top: auto;">
+    <div class="container" style="text-align: center; font-size: 0.85rem; opacity: 0.8;">
+      &copy; 2026 Pivot Aide Tax. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 27;
+
+    function updateProgress() {
+      const pct = (currentStep / totalSteps) * 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+    }
+
+    function showStep(step) {
+      document.querySelectorAll('.step-pane').forEach(el => el.classList.remove('active'));
+      const activeEl = document.querySelector(`.step-pane[data-step="${step}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+      }
+      updateProgress();
+    }
+
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    function updateTotal() {
+      let base = parseFloat(document.getElementById('pkgSelect').value) || 399;
+      let addonSum = 0;
+      document.querySelectorAll('.addon-cb:checked').forEach(cb => {
+        addonSum += parseFloat(cb.value);
+      });
+      const total = base + addonSum;
+      document.getElementById('displayTotal').innerText = '$' + total.toFixed(2);
+    }
+
+    function submitForm() {
+      alert('Thank you! Your Business Formation application has been submitted successfully.');
+      window.location.href = 'index.html';
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPkg = urlParams.get('package') || urlParams.get('plan');
+    if (selectedPkg) {
+      const pkgSelect = document.getElementById('pkgSelect');
+      if (pkgSelect) {
+        if (selectedPkg === 'standard') pkgSelect.value = '399';
+        else if (selectedPkg === 'elite') pkgSelect.value = '599';
+        else if (selectedPkg === 'pro' || selectedPkg === 'magenta') pkgSelect.value = '1499';
+      }
+    }
+
+    updateTotal();
+    updateProgress();
+    document.body.classList.add('page-loaded');
+  </script>
+</body>
+</html>
